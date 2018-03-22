@@ -1,23 +1,37 @@
+const studentList = document.querySelector('.student-list').getElementsByTagName('li');
+let noOfStudents = studentList.length;
+const pageNumber = function pageLength () {
+    let perPage = noOfStudents[Math.floor / 10];
+  return perPage;
+};
 
-
- const studentPage = function showPage (/* arguments here for page number and student list */) {
+function showPage (studentList, pageNumber/* arguments here for page number and student list */) {
   // first hide all students on the page
-    const toHide = $('.student-list').hide();
-    // Then loop through all students in our student list argument
-      for (i = 0; i < 10; i += 1) {
-        studentPage.show();
-      };
-       // if student should be on this page number
+  $(studentList).hide();
 
+    // Then loop through all students in our student list argument
+      for (i = 0; i < studentList.length; i += 1) {
+        if (studentList[i] < 11) {
+        studentList[i].show();
+      }
+    }
+    };
+       // if student should be on this page number
+       // if () {
+       //
+       // }
        	// show the student
 
-};
 
-function appendPageLinks () {
+showPage(studentList, pageNumber);
 
-
-};
-
-function searchList () {
-
-};
+// };
+//
+// function appendPageLinks () {
+//
+//
+// };
+//
+// function searchList () {
+//
+// };
