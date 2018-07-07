@@ -57,35 +57,69 @@ function appendPageLinks (noOfStudents, noOfPages) {
 appendPageLinks(noOfStudents, noOfPages);
 
 $('.page-header').append("<div class='student-search'></div>");
-//const searchBox = $('form').attr({action: '', method: 'post'});
-const searchText = $('<input>').attr({type: 'text', placeholder: "Search for students"});
-const searchButton = $('<input>').attr({type: 'submit', value: 'Submit'});
+  const searchText = '<input type="text" id="myInput" placeholder="Search for names..">'
+  const searchButton = '<input type="submit" id="submitText" onclick="searchList()" value="Submit">'
+  $('.student-search').append(searchText);
+  $('.student-search').append(searchButton);
 
-//searchBox.append(searchText);
-searchText.append(searchButton);
-$('.student-search').append(searchText);
-$('.student-search').append(searchButton);
+function searchList() {
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  fullList = document.getElementById("all-students");
+  li = fullList.getElementsByTagName("li");
 
-const form = document.getElementById('sf');
-//const input = form.querySelector('searchText');
 
-//form.addEventListener('searchButton', (e) =>
-$('submit').click(function (e) {
-  const text = input.value;
-  const result = text.toUpperCase();
-  input.value = "";
+      // $(studentList).hide();
 
-  function searchList (result) {
-    $(studentList).hide();
-  // Loop through students, showing those which match, hiding others.
-    for (let i = 0; i < noOfStudents; i += 1) {
-      if (studentList[i] === 0) {
-        // show the student
-        $(studentList[i]).show();
-
-    }
-    $('.pagination').hide();
-  }
-  searchList();
+    // Loop through students, showing those which match, hiding others.
+      for (let i = 0; i < noOfStudents; i += 1) {
+        td = li[i].getElementsByTagName('li')[0];
+        if (td) {
+if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+  tr[i].style.display = "";
+} else {
+  tr[i].style.display = "none";
 }
-});
+
+        }
+
+        // if (studentList[i] === 0) {
+        //   // show the student
+        //   $(studentList[i]).show();
+
+      }
+      $('.pagination').hide();
+    }
+    // searchList();
+
+  ;
+
+// $('.page-header').append("<div class='student-search'></div>");
+//const searchText = $('<input>').attr({type: 'text', placeholder: "Search for students"});
+// const searchButton = $('<input>').attr({type: 'submit', value: 'Submit'});
+//
+// searchText.append(searchButton);
+// $('.student-search').append(searchText);
+// $('.student-search').append(searchButton);
+//
+// const form = document.getElementById('sf');
+//
+// $(searchButton).click(function (e) {
+//   const text = input.value;
+//   const result = text.toUpperCase();
+//   input.value = "";
+//
+//   function searchList (result) {
+//     $(studentList).hide();
+//   // Loop through students, showing those which match, hiding others.
+//     for (let i = 0; i < noOfStudents; i += 1) {
+//       if (studentList[i] === 0) {
+//         // show the student
+//         $(studentList[i]).show();
+//
+//     }
+//     $('.pagination').hide();
+//   }
+//   searchList();
+// }
+// });
